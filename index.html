@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anzo's Style</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Config for Custom Colors/Fonts -->
-    <script>
+    <!-- Tailwind Config --><script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -47,35 +45,18 @@
         }
     </script>
 
-    <!-- Fonts -->
-    <style>
+    <!-- Fonts --><style>
         @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@300;400;700&display=swap');
         
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-        }
-
-        /* Hide standard number input spinners */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-          -webkit-appearance: none; 
-          margin: 0; 
-        }
-        input[type=number] {
-          -moz-appearance: textfield;
-        }
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
     </style>
 
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- React & Babel --><script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    
-    <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="bg-stone-50 text-stone-800 dark:bg-stone-950 dark:text-stone-200 transition-colors duration-500">
@@ -84,7 +65,7 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // --- ICONS (SVG Components) ---
+        // --- ICONS ---
         const Dumbbell = ({ className, size = 24 }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7.9-7.9a2.12 2.12 0 0 1 3 3L6 13a2.12 2.12 0 0 1-3-3Z"/><path d="m14 11 7.9-7.9a2.12 2.12 0 0 1 3 3L17 14a2.12 2.12 0 0 1-3-3Z"/></svg>
         );
@@ -133,43 +114,96 @@
         const BookOpen = ({ className, size = 24 }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         );
+        const Info = ({ className, size = 24 }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>
+        );
 
-        // --- DATA STRUCTURES ---
+        // --- DATA ---
         const ROUTINES = {
           chest: {
             id: 'chest',
             title: "Pecho y Tríceps",
             description: "Enfoque en empuje pesado y aislamiento muscular.",
             blocks: [
-              {
-                title: "Bloque 1 – Fuerza Pectoral",
+              { 
+                title: "Bloque 1 – Fuerza Pectoral", 
                 exercises: [
-                  { name: "Press banca unilateral en máquina", details: "6x5 rep, 80–85% RM" },
-                  { name: "Press inclinado con mancuernas", details: "5x8 rep" }
-                ]
+                  { 
+                    name: "Press banca unilateral", 
+                    details: "6x5 rep, 80–85% RM",
+                    desc: "Túmbate en un banco plano o usa la máquina. Empuja la carga con un solo brazo mientras mantienes el otro lado estable.",
+                    tips: "Contrae fuerte el abdomen para evitar rotar el torso."
+                  }, 
+                  { 
+                    name: "Press inclinado", 
+                    details: "5x8 rep",
+                    desc: "Usa un banco inclinado a 30-45º. Baja las mancuernas controladamente hasta el pecho superior y empuja.",
+                    tips: "Mantén los codos a 45º respecto al cuerpo, no los abras demasiado."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 2 – Hipertrofia Pectoral",
+              { 
+                title: "Bloque 2 – Hipertrofia Pectoral", 
                 exercises: [
-                  { name: "Press en máquina convergente", details: "4x10–12 rep" },
-                  { name: "Peck deck", details: "3x10 rep + dropset" },
-                  { name: "Peck deck de pie", details: "3x al fallo" }
-                ]
+                  { 
+                    name: "Press máquina convergente", 
+                    details: "4x10–12 rep",
+                    desc: "Sentado en la máquina, empuja hacia adelante juntando las manos al final del recorrido.",
+                    tips: "Concéntrate en apretar el pecho en el punto de máxima contracción."
+                  }, 
+                  { 
+                    name: "Peck deck", 
+                    details: "3x10 rep + dropset",
+                    desc: "En la máquina de aperturas, lleva los brazos hacia el centro manteniendo una ligera flexión de codos.",
+                    tips: "No dejes que los hombros se vayan hacia adelante al abrir."
+                  }, 
+                  { 
+                    name: "Peck deck de pie", 
+                    details: "3x al fallo",
+                    desc: "Variante de pie o inclinado hacia adelante en poleas, buscando el estiramiento máximo.",
+                    tips: "Mantén el pecho alto y orgulloso durante todo el movimiento."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 3 – Tríceps",
+              { 
+                title: "Bloque 3 – Tríceps", 
                 exercises: [
-                  { name: "Press cerrado en banca", details: "5x8–10 rep" },
-                  { name: "Press francés con barra Z", details: "4x10–12 rep" },
-                  { name: "Extensiones en polea con cuerda", details: "4x12–15 rep" },
-                  { name: "Extensión overhead con mancuerna", details: "4x12–15 rep" }
-                ]
+                  { 
+                    name: "Press cerrado", 
+                    details: "5x8–10 rep",
+                    desc: "Press de banca con agarre a la anchura de los hombros.",
+                    tips: "Mantén los codos pegados al torso al bajar."
+                  }, 
+                  { 
+                    name: "Press francés", 
+                    details: "4x10–12 rep",
+                    desc: "Tumbado, baja la barra Z hacia la frente flexionando solo los codos.",
+                    tips: "Mantén los codos fijos apuntando al techo."
+                  }, 
+                  { 
+                    name: "Extensiones polea", 
+                    details: "4x12–15 rep",
+                    desc: "De pie frente a la polea alta, extiende los brazos hacia abajo separando la cuerda al final.",
+                    tips: "No uses el impulso del cuerpo, solo mueve los antebrazos."
+                  }, 
+                  { 
+                    name: "Extensión overhead", 
+                    details: "4x12–15 rep",
+                    desc: "Extensión de tríceps por encima de la cabeza con mancuerna o polea.",
+                    tips: "Asegúrate de estirar completamente el tríceps en la bajada."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 4 – Finisher",
+              { 
+                title: "Bloque 4 – Finisher", 
                 exercises: [
-                  { name: "Press JM", details: "4x8–10 rep, peso moderado" }
-                ]
+                  { 
+                    name: "Press JM", 
+                    details: "4x8–10 rep, peso moderado",
+                    desc: "Híbrido entre press cerrado y press francés. Baja la barra hacia el cuello/mentón.",
+                    tips: "Movimiento técnico: controla la bajada y explota al subir."
+                  }
+                ] 
               }
             ]
           },
@@ -178,33 +212,73 @@
             title: "Espalda y Bíceps",
             description: "Construcción de amplitud y densidad dorsal.",
             blocks: [
-              {
-                title: "Bloque 1 – Espalda (Tirón)",
+              { 
+                title: "Bloque 1 – Espalda (Tirón)", 
                 exercises: [
-                  { name: "Jalón al pecho abierto", details: "2 series al fallo + parciales" },
-                  { name: "Remo Gironda", details: "2 series al fallo + parciales" },
-                  { name: "Remo en punta", details: "2 series al fallo" }
-                ]
+                  { 
+                    name: "Jalón al pecho abierto", 
+                    details: "2 series al fallo",
+                    desc: "Sentado, tracciona la barra hacia la parte superior del pecho.",
+                    tips: "Inicia el movimiento bajando las escápulas, no solo tirando con los brazos."
+                  }, 
+                  { 
+                    name: "Remo Gironda", 
+                    details: "2 series al fallo",
+                    desc: "Remo sentado en polea baja. Tira del agarre hacia el abdomen.",
+                    tips: "Mantén la espalda recta y saca pecho al tirar."
+                  }, 
+                  { 
+                    name: "Remo en punta", 
+                    details: "2 series al fallo",
+                    desc: "Con barra T o soporte, inclínate y rema hacia el abdomen.",
+                    tips: "No cargues excesivo peso si comprometes la zona lumbar."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 2 – Unilateral y Estiramiento",
+              { 
+                title: "Bloque 2 – Unilateral", 
                 exercises: [
-                  { name: "Remo unilateral en máquina", details: "3 series" },
-                  { name: "Pullover unilateral en polea alta", details: "3 series al fallo con dropset" }
-                ]
+                  { 
+                    name: "Remo unilateral", 
+                    details: "3 series",
+                    desc: "Remo con mancuerna o en máquina a una mano.",
+                    tips: "Evita rotar excesivamente el tronco para compensar."
+                  }, 
+                  { 
+                    name: "Pullover unilateral", 
+                    details: "3 series al fallo",
+                    desc: "En polea alta, brazo recto, lleva la mano desde arriba hasta la cadera.",
+                    tips: "Siente el estiramiento en el dorsal al subir el brazo."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 3 – Bíceps",
+              { 
+                title: "Bloque 3 – Bíceps", 
                 exercises: [
-                  { name: "Predicador con barra Z/mancuernas", details: "3 series al fallo" },
-                  { name: "Curl inclinado con mancuernas", details: "3 series al fallo" }
-                ]
+                  { 
+                    name: "Predicador", 
+                    details: "3 series al fallo",
+                    desc: "Curl de bíceps apoyando los brazos en el banco predicador.",
+                    tips: "Extiende el brazo casi por completo, pero sin hiperextender el codo."
+                  }, 
+                  { 
+                    name: "Curl inclinado", 
+                    details: "3 series al fallo",
+                    desc: "Sentado en banco inclinado, deja caer los brazos y realiza el curl.",
+                    tips: "Mantén los codos atrás para enfatizar la cabeza larga del bíceps."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 4 – Finisher",
+              { 
+                title: "Bloque 4 – Finisher", 
                 exercises: [
-                  { name: "Peso muerto convencional (Bombeo)", details: "3–4x12–15 rep, 60–70% RM" }
-                ]
+                  { 
+                    name: "Peso muerto bombeo", 
+                    details: "3–4x12–15 rep",
+                    desc: "Peso muerto convencional con menos peso, enfocado en la técnica y repeticiones.",
+                    tips: "No rebotes la barra en el suelo, toca y sube."
+                  }
+                ] 
               }
             ]
           },
@@ -213,69 +287,148 @@
             title: "Pierna",
             description: "Entrenamiento completo de tren inferior.",
             blocks: [
-              {
-                title: "Bloque 1 – Isquiotibiales",
+              { 
+                title: "Bloque 1 – Isquiotibiales", 
                 exercises: [
-                  { name: "Curl femoral sentado", details: "2x6–8 rep al fallo + parciales" },
-                  { name: "Curl femoral tumbado", details: "2x6–8 rep al fallo + parciales" }
-                ]
+                  { 
+                    name: "Curl femoral sentado", 
+                    details: "2x6–8 rep al fallo",
+                    desc: "Sentado en la máquina, flexiona las rodillas llevando los talones hacia abajo.",
+                    tips: "Asegúrate de que la almohadilla te sujete bien los muslos."
+                  }, 
+                  { 
+                    name: "Curl femoral tumbado", 
+                    details: "2x6–8 rep al fallo",
+                    desc: "Tumbado boca abajo, lleva los talones hacia los glúteos.",
+                    tips: "Evita levantar la cadera del banco al contraer."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 2 – Cuádriceps",
+              { 
+                title: "Bloque 2 – Cuádriceps", 
                 exercises: [
-                  { name: "Hack Squat", details: "3x6–8 rep al fallo" },
-                  { name: "Squat en multipower", details: "3x6–8 rep al fallo" }
-                ]
+                  { 
+                    name: "Hack Squat", 
+                    details: "3x6–8 rep al fallo",
+                    desc: "Sentadilla en máquina Hack, pies adelantados.",
+                    tips: "Baja profundo (rompe el paralelo) sin despegar la espalda del respaldo."
+                  }, 
+                  { 
+                    name: "Squat multipower", 
+                    details: "3x6–8 rep al fallo",
+                    desc: "Sentadilla guiada en máquina Smith.",
+                    tips: "Coloca los pies ligeramente adelantados para enfatizar cuádriceps y proteger rodillas."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 3 – Peso muerto / Glúteo",
+              { 
+                title: "Bloque 3 – Glúteo", 
                 exercises: [
-                  { name: "Peso muerto rumano con cinturón", details: "3x6–8 rep" }
-                ]
+                  { 
+                    name: "Peso muerto rumano", 
+                    details: "3x6–8 rep",
+                    desc: "Baja la barra rozando las piernas llevando la cadera hacia atrás, con leve flexión de rodillas.",
+                    tips: "La clave es echar el culo atrás, no solo bajar el tronco."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 4 – Aislantes y Accesorios",
+              { 
+                title: "Bloque 4 – Accesorios", 
                 exercises: [
-                  { name: "Extensión de cuádriceps", details: "3 series + dropset" },
-                  { name: "Abductores y aductores", details: "3 series + dropset" },
-                  { name: "Gemelos", details: "3 series de 30 segundos" }
-                ]
+                  { 
+                    name: "Extensión cuádriceps", 
+                    details: "3 series + dropset",
+                    desc: "Sentado, extiende las rodillas hasta bloquear.",
+                    tips: "Aguanta 1 segundo arriba en cada repetición."
+                  }, 
+                  { 
+                    name: "Abductores", 
+                    details: "3 series",
+                    desc: "Máquina de abducción (abrir piernas).",
+                    tips: "No te inclines hacia adelante, mantén la espalda pegada."
+                  }, 
+                  { 
+                    name: "Gemelos", 
+                    details: "3 series",
+                    desc: "Elevación de talones de pie o sentado.",
+                    tips: "Rango completo: estira abajo del todo y sube al máximo."
+                  }
+                ] 
               }
             ]
           },
           delts: {
             id: 'delts',
-            title: "Deltoides y Trapecio",
+            title: "Deltoides",
             description: "Hombros 3D y trapecios potentes.",
             blocks: [
-              {
-                title: "Bloque 1 – Deltoide Anterior / Fuerza",
+              { 
+                title: "Bloque 1 – Fuerza", 
                 exercises: [
-                  { name: "Press militar con barra", details: "5x6–8 rep" },
-                  { name: "Press con mancuernas sentado", details: "4x8–10 rep" }
-                ]
+                  { 
+                    name: "Press militar", 
+                    details: "5x6–8 rep",
+                    desc: "De pie o sentado, empuja la barra desde el pecho hasta encima de la cabeza.",
+                    tips: "Mete la cabeza entre los brazos al final del movimiento."
+                  }, 
+                  { 
+                    name: "Press mancuernas", 
+                    details: "4x8–10 rep",
+                    desc: "Press de hombros sentado con mancuernas.",
+                    tips: "No choques las mancuernas arriba, mantén la tensión."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 2 – Deltoide Lateral / Aislantes",
+              { 
+                title: "Bloque 2 – Lateral", 
                 exercises: [
-                  { name: "Elevaciones laterales", details: "4x12–15 rep" },
-                  { name: "Pájaros o elevaciones posteriores", details: "4x12–15 rep" },
-                  { name: "Face Pulls", details: "3–4x12–15 rep" }
-                ]
+                  { 
+                    name: "Elevaciones laterales", 
+                    details: "4x12–15 rep",
+                    desc: "De pie, eleva los brazos lateralmente hasta la altura de los hombros.",
+                    tips: "Imagina que estás vertiendo agua con una jarra (pulgar ligeramente abajo)."
+                  }, 
+                  { 
+                    name: "Pájaros", 
+                    details: "4x12–15 rep",
+                    desc: "Inclinado hacia adelante, eleva los brazos lateralmente para el deltoides posterior.",
+                    tips: "No juntes las escápulas, el movimiento sale del hombro."
+                  }, 
+                  { 
+                    name: "Face Pulls", 
+                    details: "3–4x12–15 rep",
+                    desc: "En polea alta, tira de la cuerda hacia la cara separando las manos.",
+                    tips: "Los codos deben quedar por encima de los hombros al final."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 3 – Trapecio / Bombeo",
+              { 
+                title: "Bloque 3 – Trapecio", 
                 exercises: [
-                  { name: "Encogimientos con barra/mancuernas", details: "4x12–15 rep" },
-                  { name: "Remo al mentón", details: "3x10–12 rep" }
-                ]
+                  { 
+                    name: "Encogimientos", 
+                    details: "4x12–15 rep",
+                    desc: "Con barra o mancuernas, eleva los hombros hacia las orejas.",
+                    tips: "No rotes los hombros, movimiento vertical puro."
+                  }, 
+                  { 
+                    name: "Remo al mentón", 
+                    details: "3x10–12 rep",
+                    desc: "Sube la barra pegada al cuerpo hasta la altura del pecho alto.",
+                    tips: "Los codos siempre deben ir más altos que las manos."
+                  }
+                ] 
               },
-              {
-                title: "Bloque 4 – Finisher",
+              { 
+                title: "Bloque 4 – Finisher", 
                 exercises: [
-                  { name: "Elevaciones frontales", details: "2–3x10–12 rep" },
-                  { name: "Press banca moderado", details: "2–3x10–12 rep" }
-                ]
+                  { 
+                    name: "Elevaciones frontales", 
+                    details: "2–3x10–12 rep",
+                    desc: "Eleva el peso frente a ti hasta la altura de los ojos.",
+                    tips: "Controla la bajada para no balancear el cuerpo."
+                  }
+                ] 
               }
             ]
           }
@@ -483,6 +636,12 @@
 
         const InfoView = ({ routineId, setView, setSelectedRoutineId, setTimerVisible, setTimerRunning, cardClass, accentText, buttonPrimary }) => {
           const routine = ROUTINES[routineId];
+          const [expandedInfo, setExpandedInfo] = useState({});
+
+          const toggleInfo = (name) => {
+            setExpandedInfo(prev => ({...prev, [name]: !prev[name]}));
+          };
+
           if (!routine) return null;
           return (
             <div className="pt-24 pb-12 px-4 max-w-5xl mx-auto animate-fade-in">
@@ -493,28 +652,39 @@
                 <span className="opacity-30">|</span>
                 <h2 className="text-3xl font-serif font-bold">{routine.title}</h2>
               </div>
-              <div className="w-full h-64 md:h-96 bg-stone-800 rounded-2xl mb-12 overflow-hidden relative shadow-2xl group">
-                <img 
-                  src={`/api/placeholder/800/400`} 
-                  alt={routine.title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
-                />
+              
+              <div className="w-full h-64 md:h-96 bg-stone-800 rounded-2xl mb-12 overflow-hidden relative shadow-2xl group flex items-center justify-center">
+                <Dumbbell size={120} className="text-stone-700 opacity-50" />
                 <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full">
                   <p className="text-xl text-stone-300 italic font-serif">{routine.description}</p>
                 </div>
               </div>
+
               <div className="grid gap-8 md:grid-cols-2">
                 {routine.blocks.map((block, idx) => (
                   <div key={idx} className={`p-6 rounded-xl border transition-all hover:border-amber-500/30 ${cardClass}`}>
                     <h3 className={`text-xl font-bold mb-4 ${accentText}`}>{block.title}</h3>
                     <ul className="space-y-4">
                       {block.exercises.map((ex, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="mt-1.5 w-2 h-2 rounded-full bg-amber-500 flex-shrink-0" />
-                          <div>
-                            <p className="font-semibold text-lg">{ex.name}</p>
-                            <p className="text-sm opacity-70 font-mono">{ex.details}</p>
+                        <li key={i} className="flex flex-col">
+                          <div className="flex items-start gap-3">
+                             <div className="mt-1.5 w-2 h-2 rounded-full bg-amber-500 flex-shrink-0" />
+                             <div className="flex-1">
+                                <div className="flex items-center gap-2">
+                                   <p className="font-semibold text-lg">{ex.name}</p>
+                                   <button onClick={() => toggleInfo(ex.name)} className="text-stone-400 hover:text-amber-500 transition-colors">
+                                     <Info size={16} />
+                                   </button>
+                                </div>
+                                <p className="text-sm opacity-70 font-mono">{ex.details}</p>
+                             </div>
                           </div>
+                          {expandedInfo[ex.name] && (
+                            <div className="ml-5 mt-2 p-3 bg-stone-500/10 rounded-lg text-sm animate-fade-in">
+                               <p className="mb-1"><strong>Cómo:</strong> {ex.desc}</p>
+                               <p className="italic text-stone-500 dark:text-stone-400"><strong>Tip:</strong> {ex.tips}</p>
+                            </div>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -564,7 +734,7 @@
                        <h3 className="text-2xl font-bold text-white mb-1">{routine.title}</h3>
                        <p className="text-amber-400 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                          Comenzar Entrenamiento &rarr;
-                       </p>
+               </p>
                      </div>
                   </div>
                 ))}
@@ -584,6 +754,12 @@
           darkMode, 
           cardClass 
         }) => {
+          const [expandedInfo, setExpandedInfo] = useState({});
+          
+          const toggleInfo = (name) => {
+            setExpandedInfo(prev => ({...prev, [name]: !prev[name]}));
+          };
+
           const updateExercise = (exerciseName, field, value) => {
             setCurrentWorkoutData(prev => ({
               ...prev,
@@ -601,7 +777,7 @@
 
           const totalExercises = routine.blocks.reduce((acc, block) => acc + block.exercises.length, 0);
           const completedCount = Object.values(currentWorkoutData).filter(e => e.completed).length;
-          const progress = Math.round((completedCount / totalExercises) * 100);
+          const progress = totalExercises > 0 ? Math.round((completedCount / totalExercises) * 100) : 0;
 
           return (
             <div className="pt-24 pb-24 px-4 max-w-4xl mx-auto animate-fade-in">
@@ -641,7 +817,12 @@
                           >
                             <div className="flex justify-between items-start mb-4">
                               <div>
-                                <h4 className={`font-bold text-lg ${data.completed ? 'text-green-500' : ''}`}>{ex.name}</h4>
+                                <div className="flex items-center gap-2">
+                                   <h4 className={`font-bold text-lg ${data.completed ? 'text-green-500' : ''}`}>{ex.name}</h4>
+                                   <button onClick={() => toggleInfo(ex.name)} className="text-stone-400 hover:text-amber-500 transition-colors">
+                                     <Info size={18} />
+                                   </button>
+                                </div>
                                 <p className="text-xs opacity-60 mt-1">{ex.details}</p>
                               </div>
                               <button 
@@ -651,6 +832,14 @@
                                 <CheckCircle size={24} />
                               </button>
                             </div>
+
+                            {expandedInfo[ex.name] && (
+                                <div className="mb-4 p-3 bg-stone-500/10 rounded-lg text-xs animate-fade-in">
+                                   <p className="mb-1"><strong>Cómo:</strong> {ex.desc}</p>
+                                   <p className="italic text-stone-500 dark:text-stone-400"><strong>Tip:</strong> {ex.tips}</p>
+                                </div>
+                            )}
+
                             <div className={`grid grid-cols-3 gap-4 transition-opacity duration-300 ${data.completed ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
                               <div className="flex flex-col items-center">
                                  <label className="text-[10px] uppercase tracking-wider opacity-60 mb-1">Series</label>
